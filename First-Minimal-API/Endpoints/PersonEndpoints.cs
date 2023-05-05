@@ -36,7 +36,7 @@ namespace First_Minimal_API.Endpoints
                                p => p.Id == id);
 
             if (personFromDb is null) return;
-
+            
             _inMemDb.Remove(personFromDb);
         }
     }

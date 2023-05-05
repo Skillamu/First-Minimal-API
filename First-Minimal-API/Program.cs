@@ -23,13 +23,13 @@ namespace First_Minimal_API
 
             app.MapGet("/person", personEndpoints.SelectAllPersons);
 
-            app.MapGet("/person/id/{id}", personEndpoints.SelectPersonById);
+            app.MapGet("/person/{id}", personEndpoints.SelectPersonById);
 
             app.MapPost("/person", personEndpoints.InsertPerson);
 
             app.MapPut("/person", personEndpoints.UpdatePerson);
 
-            app.MapDelete("/person/id/{id}", personEndpoints.DeletePerson);
+            app.MapDelete("/person/{id}", personEndpoints.DeletePerson);
 
             app.Run();
         }
