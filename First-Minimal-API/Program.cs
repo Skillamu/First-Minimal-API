@@ -21,11 +21,15 @@ namespace First_Minimal_API
 
             var personEndpoints = new PersonEndpoints(inMemDb);
 
-            app.MapGet("/person", personEndpoints.ListAllPersons);
+            app.MapGet("/person", personEndpoints.SelectAllPersons);
 
-            app.MapGet("/person/id/{id}", personEndpoints.FindPersonById);
+            app.MapGet("/person/id/{id}", personEndpoints.SelectPersonById);
 
-            app.MapPost("/person", personEndpoints.AddNewPerson);
+            app.MapPost("/person", personEndpoints.InsertPerson);
+
+            app.MapPut("/person", personEndpoints.UpdatePerson);
+
+            app.MapDelete("/person/id/{id}", personEndpoints.DeletePerson);
 
             app.Run();
         }

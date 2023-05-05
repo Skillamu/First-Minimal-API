@@ -11,13 +11,33 @@ namespace First_Minimal_API.Endpoints
             _inMemDb = inMemDb;
         }
 
-        public Person? FindPersonById(int id)
+        public Person? SelectPersonById(int id)
             => _inMemDb.FirstOrDefault(person => person.Id == id);
 
-        public List<Person> ListAllPersons()
+        public List<Person> SelectAllPersons()
             => _inMemDb;
 
-        public void AddNewPerson(Person person)
+        public void InsertPerson(Person person)
             => _inMemDb.Add(person);
+
+        public void UpdatePerson(Person person)
+        {
+            var personFromDb = _inMemDb.FirstOrDefault(
+                               p => p.Id == person.Id);
+
+            if (personFromDb is null) return;
+
+            personFromDb.Name = person.Name;
+        }
+
+        public void DeletePerson(int id)
+        {
+            var personFromDb = _inMemDb.FirstOrDefault(
+                               p => p.Id == id);
+
+            if (personFromDb is null) return;
+
+            _inMemDb.Remove(personFromDb);
+        }
     }
 }
